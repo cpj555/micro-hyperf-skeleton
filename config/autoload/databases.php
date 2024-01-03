@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 /**
  * This file is part of Hyperf.
  *
@@ -11,7 +12,7 @@ declare(strict_types=1);
  */
 return [
     'default' => [
-        'driver' => env('DB_DRIVER', 'mysql'),
+        'driver' => \Hyperf\Support\env('DB_DRIVER', 'mysql'),
         'host' => env('DB_HOST', 'localhost'),
         'port' => env('DB_PORT', 3306),
         'database' => env('DB_DATABASE', 'hyperf'),
@@ -38,9 +39,9 @@ return [
         ],
         'commands' => [
             'gen:model' => [
-                'path' => 'app/Model',
+                'path' => 'app/Entity',
                 'force_casts' => true,
-                'inheritance' => 'Model',
+                'inheritance' => '\Losingbattle\MicroBase\Model\BaseModel',
                 'uses' => '',
                 'table_mapping' => [],
             ],
