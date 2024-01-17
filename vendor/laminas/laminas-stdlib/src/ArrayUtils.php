@@ -35,15 +35,11 @@ abstract class ArrayUtils
 {
     /**
      * Compatibility Flag for ArrayUtils::filter
-     *
-     * @deprecated
      */
     public const ARRAY_FILTER_USE_BOTH = 1;
 
     /**
      * Compatibility Flag for ArrayUtils::filter
-     *
-     * @deprecated
      */
     public const ARRAY_FILTER_USE_KEY = 2;
 

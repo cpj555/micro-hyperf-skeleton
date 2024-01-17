@@ -3,7 +3,6 @@
 declare(strict_types=1);
 namespace Losingbattle\MicroBase\Exception\Handler;
 
-use Hyperf\Contract\StdoutLoggerInterface;
 use Losingbattle\MicroBase\Constants\Code;
 use Losingbattle\MicroBase\Contract\ResponseResultInterface;
 use Losingbattle\MicroBase\Events\ExceptionExecuted;
@@ -23,7 +22,6 @@ use Throwable;
 class RpcExceptionHandler extends HttpExceptionHandler
 {
 
-
     /** @var ContainerInterface */
     private $container;
 
@@ -37,7 +35,7 @@ class RpcExceptionHandler extends HttpExceptionHandler
      */
     private $reponseResult;
 
-    public function __construct(ContainerInterface $container, StdoutLoggerInterface $loggerFactory, EventDispatcherInterface $eventDispatcher)
+    public function __construct(ContainerInterface $container,EventDispatcherInterface $eventDispatcher)
     {
         $this->container = $container;
         $this->reponseResult = $this->container->get(OrResponseResult::class);
