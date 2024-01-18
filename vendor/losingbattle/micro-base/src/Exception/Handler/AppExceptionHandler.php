@@ -34,7 +34,7 @@ class AppExceptionHandler extends HttpExceptionHandler
      */
     private $reponseResult;
 
-    public function __construct(ContainerInterface $container, EventDispatcherInterface $eventDispatcher)
+    public function __construct(ContainerInterface $container,EventDispatcherInterface $eventDispatcher)
     {
         $this->container = $container;
         $this->reponseResult = $this->container->get(ResponseResultInterface::class);
