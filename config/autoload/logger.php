@@ -9,8 +9,11 @@ use Losingbattle\MicroBase\TraceId\Formatter\TraceIdContextFormatter;
 use Losingbattle\MicroBase\TraceId\Formatter\TraceIdFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
+use function Hyperf\Support\env;
+use function Hyperf\Support\value;
 
 $logPath = env('LOGPATH', BASE_PATH . '/runtime/logs');
+
 
 [$handler, $formatterClass] = value(function () {
     switch (env('ENV', Env::LOCAL)) {

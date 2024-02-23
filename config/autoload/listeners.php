@@ -14,5 +14,6 @@ return [
     Hyperf\ExceptionHandler\Listener\ErrorExceptionHandler::class,
     Hyperf\Command\Listener\FailToHandleListener::class,
     \Losingbattle\MicroBase\Listener\ExceptionListener::class,
+    \Losingbattle\RocketMqHttp\Listener\ConsumeListener::class,
 
 ];

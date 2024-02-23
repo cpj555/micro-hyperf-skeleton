@@ -312,6 +312,16 @@ class Arr
     }
 
     /**
+     * Determines if an array is a list.
+     *
+     * An array is a "list" if all array keys are sequential integers starting from 0 with no gaps in between.
+     */
+    public static function isList(array $array): bool
+    {
+        return array_is_list($array);
+    }
+
+    /**
      * Run an associative map over each of the items.
      *
      * The callback should return an associative array with a single key/value pair.
@@ -576,6 +586,29 @@ class Arr
             $array1 = array_values($array1);
         }
         return $array1;
+    }
+
+    /**
+     * Remove one or more elements from an array.
+     */
+    public static function remove(array $array, mixed ...$value): array
+    {
+        $array = array_diff($array, $value);
+        return array_values($array);
+    }
+
+    /**
+     * Removes one or more elements from an array, keeping the original keys.
+     */
+    public static function removeKeepKey(array $array, mixed ...$value): array
+    {
+        foreach ($value as $item) {
+            while (false !== ($index = array_search($item, $array))) {
+                unset($array[$index]);
+            }
+        }
+
+        return $array;
     }
 
     /**

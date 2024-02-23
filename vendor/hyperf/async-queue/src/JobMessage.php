@@ -34,13 +34,21 @@ class JobMessage implements MessageInterface
 
     public function __unserialize(array $data): void
     {
-        [$job, $attempts] = $data;
+        if (array_is_list($data)) { // Compatible with old version, will be removed at v3.2
+            $data = [
+                'job' => $data[0],
+                'attempts' => $data[1],
+            ];
+        }
+
+        $job = $data['job'];
+
         if ($job instanceof UnCompressInterface) {
             $job = $job->uncompress();
         }
 
         $this->job = $job;
-        $this->attempts = $attempts;
+        $this->attempts = $data['attempts'];
     }
 
     public function job(): JobInterface

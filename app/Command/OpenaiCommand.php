@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\RocketMqHttp\Consumer\MessageData\OrderSubmitData;
+use App\RocketMqHttp\Producer\OrderSubmitNormalMessage;
 use Exception;
 use GuzzleHttp\Client;
 use Hyperf\Command\Annotation\Command;
@@ -30,6 +32,11 @@ class OpenaiCommand extends HyperfCommand
     public function handle()
     {
         try {
+            $o = new OrderSubmitNormalMessage();
+            $o->setOrderNo('order_no');
+            producer()->produce($o);
+            return;
+
             $client = OpenAI::factory()
                 ->withApiKey('sk-WJpYabu1B5Q3pxdQA87974443fD745CeB74c1066C6Bc725e')
                 ->withBaseUri('https://api.xiamoai.top/v1') // default: api.openai.com/v1

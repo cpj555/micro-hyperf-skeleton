@@ -57,6 +57,7 @@ class Decoder
             if ($queryStart !== false) {
                 $queryLength = $nspEnd === false ? $currentIndex - $queryStart : $currentIndex - $queryStart - 1;
                 $queryStr = substr($payload, $queryStart + 1, $queryLength);
+
                 $nsp = substr($payload, $nspStart, $queryStart - $nspStart);
                 parse_str($queryStr, $query);
             } else {

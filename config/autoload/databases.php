@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use function Hyperf\Support\env;
+
 /**
  * This file is part of Hyperf.
  *
@@ -12,7 +14,7 @@ declare(strict_types=1);
  */
 return [
     'default' => [
-        'driver' => \Hyperf\Support\env('DB_DRIVER', 'mysql'),
+        'driver' => env('DB_DRIVER', 'mysql'),
         'host' => env('DB_HOST', 'localhost'),
         'port' => env('DB_PORT', 3306),
         'database' => env('DB_DATABASE', 'hyperf'),
@@ -27,7 +29,7 @@ return [
             'connect_timeout' => 10.0,
             'wait_timeout' => 3.0,
             'heartbeat' => -1,
-            'max_idle_time' => (float) env('DB_MAX_IDLE_TIME', 60),
+            'max_idle_time' => (float)env('DB_MAX_IDLE_TIME', 60),
         ],
         'cache' => [
             'handler' => Hyperf\ModelCache\Handler\RedisHandler::class,
